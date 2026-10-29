@@ -2,14 +2,15 @@
 
 Sistema de cadastro e gerenciamento de livros desenvolvido em Python aplicando os princípios de Programação Orientada a Objetos (POO): encapsulamento, herança, polimorfismo e abstração.
 
-A aplicação permite cadastrar livros, listá-los e gerenciar o acervo de forma simples, com interface gráfica em Tkinter e persistência em SQLite.
+A aplicação foi adaptada para rodar na **web com Streamlit**, facilitando a publicação e demonstração.
 
 ## Bibliotecas utilizadas
 
 | Nome | Versão | Uso |
 |------|--------|-----|
 | Python | 3.10+ | Linguagem principal |
-| tkinter | incluso no Python | Interface gráfica |
+| Streamlit | 1.39.0 | Interface web |
+| pandas | 2.2.3 | Exibição da tabela de livros |
 | sqlite3 | incluso no Python | Banco de dados local |
 | pytest | 7.4.0 | Testes unitários |
 
@@ -17,48 +18,40 @@ A aplicação permite cadastrar livros, listá-los e gerenciar o acervo de forma
 
 ```
 livrocad/
-│
-├── main.py                  # Ponto de entrada da aplicação
+├── app.py                    # Aplicação Streamlit (interface web)
+├── main.py                   # Versão desktop (Tkinter) - opcional
 ├── README.md
 ├── requirements.txt
-│
-├── dominio/                 # Lógica de negócio (POO)
+├── dominio/
 │   ├── __init__.py
-│   └── livro.py             # Classes ItemAcervo (abstrata) e Livro
-│
-├── persistencia/            # Acesso ao banco de dados
+│   └── livro.py
+├── persistencia/
 │   ├── __init__.py
-│   └── repositorio_livro.py # Repositório SQLite
-│
-├── interface/               # Interface gráfica (Tkinter)
-│   ├── __init__.py
-│   └── tela_principal.py    # Tela principal de cadastro e listagem
-│
+│   └── repositorio_livro.py
 └── tests/
-    └── test_livro.py        # Testes das classes de domínio
+    └── test_livro.py
 ```
 
-## Como executar
+## Como executar localmente
 
 ```bash
-# Clone o repositório
 git clone https://github.com/Reguloslk/livrocad.git
 cd livrocad
 
-# (Opcional) Crie um ambiente virtual
-python -m venv venv
-source venv/bin/activate  # Linux/Mac
-# ou venv\Scripts\activate  # Windows
-
-# Instale as dependências (apenas pytest)
 pip install -r requirements.txt
 
-# Execute os testes
-pytest -v
-
-# Inicie a aplicação
-python main.py
+# Executar a versão web
+streamlit run app.py
 ```
+
+## Publicação no Streamlit Community Cloud
+
+1. Acesse [share.streamlit.io](https://share.streamlit.io)
+2. Faça login com sua conta GitHub
+3. Clique em **New app**
+4. Selecione o repositório `Reguloslk/livrocad`
+5. Defina o arquivo principal como `app.py`
+6. Clique em **Deploy**
 
 ## Princípios de POO aplicados
 
@@ -66,10 +59,6 @@ python main.py
 - **Herança**: `Livro` herda de `ItemAcervo`.
 - **Polimorfismo**: Método `descricao()` sobrescrito na classe filha.
 - **Abstração**: Classe `ItemAcervo` é abstrata e não pode ser instanciada.
-
-## Prints do programa funcionando
-
-*(Adicione aqui os prints da tela de cadastro, lista de livros e resultado dos testes)*
 
 ## Autor
 
