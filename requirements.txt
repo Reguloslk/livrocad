@@ -1,3 +1,1 @@
-streamlit==1.39.0
-pandas==2.2.3
-pytest==7.4.0
+streamlit==1.39.0\npandas==2.2.3\npytest==7.4.0\n

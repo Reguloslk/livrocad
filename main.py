@@ -1,12 +1,9 @@
-from interface.tela_principal import TelaPrincipal
-import tkinter as tk
+"""Ponto de entrada da aplicação web.
 
+Execute com:
+    streamlit run main.py
+"""
 
-def main():
-    root = tk.Tk()
-    app = TelaPrincipal(root)
-    root.mainloop()
+from views import render
 
-
-if __name__ == "__main__":
-    main()
+render()
